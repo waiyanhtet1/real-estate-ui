@@ -69,12 +69,12 @@ nav {
       transition: all 0.4s ease;
       cursor: pointer;
 
-      @include sm {
-        display: none;
-      }
-
       &:hover {
         opacity: 0.8;
+      }
+
+      @include sm {
+        display: none;
       }
     }
 
