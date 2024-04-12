@@ -1,3 +1,4 @@
+import SearchBar from "../../components/searchBar/SearchBar";
 import "./homePage.scss";
 
 const HomePage = () => {
@@ -12,6 +13,8 @@ const HomePage = () => {
             facilis id pariatur fugit quos laudantium temporibus dolor ea
             repellat provident impedit!
           </p>
+
+          <SearchBar />
 
           <div className="boxes">
             <div className="box">

@@ -1,3 +1,5 @@
+@import "../../responsive.scss";
+
 .homepage {
   display: flex;
   height: 100%;
@@ -29,6 +31,17 @@
           font-size: 20px;
           font-weight: 300;
         }
+        @include sm {
+          display: none;
+        }
+      }
+
+      @include md {
+        padding: 0;
+      }
+
+      @include sm {
+        justify-content: flex-start;
       }
     }
   }
@@ -39,6 +52,10 @@
     position: relative;
     display: flex;
     align-items: center;
+
+    @include md {
+      display: none;
+    }
 
     img {
       width: 115%;
