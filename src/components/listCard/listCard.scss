@@ -1,2 +1,98 @@
 .listCard {
+  display: flex;
+  gap: 20px;
+
+  .imageContainer {
+    flex: 2;
+    height: 180px;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+  }
+  .contentContainer {
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 20px;
+
+    .content-title {
+      font-size: 18px;
+      color: #444;
+      transition: all 0.4s ease;
+
+      &:hover {
+        color: #000;
+        scale: 1.01;
+      }
+    }
+
+    .content-address {
+      color: #888;
+      font-size: 14px;
+    }
+
+    .price {
+      width: max-content;
+      padding: 5px;
+      font-size: 16px;
+      border-radius: 5px;
+      background-color: rgba(254, 205, 81, 0.438);
+    }
+
+    .bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .features {
+        display: flex;
+        gap: 20px;
+
+        .feature {
+          display: flex;
+          align-items: center;
+          gap: 5px;
+          background-color: whitesmoke;
+          padding: 5px;
+          font-size: 12px;
+
+          img {
+            width: 24px;
+            height: 24px;
+          }
+        }
+      }
+
+      .icons {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        .icon {
+          border: 1px solid #999;
+          padding: 5px;
+          border-radius: 5px;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transition: all 0.4s ease;
+
+          img {
+            width: 18px;
+            height: 18px;
+          }
+
+          &:hover {
+            background-color: lightgray;
+          }
+        }
+      }
+    }
+  }
 }
