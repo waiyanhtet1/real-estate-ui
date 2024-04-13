@@ -7,7 +7,7 @@ const SinglePage = () => {
     <div className="singlePage">
       <div className="details">
         <div className="wrapper">
-          <Slider />
+          <Slider images={data.images} />
           <div className="top">
             <div className="info">
               <h1 className="info-title">{data.title}</h1>
