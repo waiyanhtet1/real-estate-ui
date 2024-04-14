@@ -18,7 +18,12 @@ const Chat = ({ setIsMsgOpen }) => {
       </div>
       <div className="middle">
         <div className="chatMessage">
-          <p>Lorem ipsum dolor sit amet.</p>
+          <p>
+            Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet consectetur
+            adipisicing elit. Minus ea odit nisi aliquam quo, quibusdam omnis
+            maiores impedit deserunt ex aspernatur consequatur, tempora fugit
+            architecto. Officia quas doloribus praesentium quia!
+          </p>
           <span>1 hour ago.</span>
         </div>
         <div className="chatMessage own">

@@ -109,6 +109,7 @@ const Profile = () => {
               <MessageCard />
             </div>
           </div>
+          {isMsgOpen && <Chat setIsMsgOpen={setIsMsgOpen} />}
         </div>
       </div>
     </div>
