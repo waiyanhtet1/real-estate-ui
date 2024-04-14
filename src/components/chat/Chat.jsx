@@ -58,11 +58,19 @@ const Chat = ({ setIsMsgOpen }) => {
           <p>Lorem ipsum dolor sit amet.</p>
           <span>1 hour ago.</span>
         </div>
+        <div className="chatMessage">
+          <p>Lorem ipsum dolor sit amet.</p>
+          <span>1 hour ago.</span>
+        </div>
+        <div className="chatMessage own">
+          <p>Lorem ipsum dolor sit amet.</p>
+          <span>1 hour ago.</span>
+        </div>
       </div>
-      <div className="bottom">
+      <footer className="bottom">
         <textarea name="" id="" cols="30" rows="10"></textarea>
         <button>Send</button>
-      </div>
+      </footer>
     </div>
   );
 };
