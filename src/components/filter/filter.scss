@@ -1,3 +1,5 @@
+@import "../../responsive.scss";
+
 .filter {
   display: flex;
   flex-direction: column;
@@ -36,6 +38,10 @@
     display: flex;
     align-items: center;
     gap: 30px;
+
+    @include lg {
+      flex-wrap: wrap;
+    }
 
     button {
       border: 1px solid #e0e0e0;
