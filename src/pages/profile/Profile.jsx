@@ -1,8 +1,13 @@
 import "./profile.scss";
 import { listData } from "../../lib/dummyData";
 import ListCard from "../../components/listCard/ListCard";
+import MessageCard from "../../components/messageCard/MessageCard";
+import Chat from "../../components/chat/Chat";
+import { useState } from "react";
 
 const Profile = () => {
+  const [isMsgOpen, setIsMsgOpen] = useState(null);
+
   return (
     <div className="profile">
       <div className="details">
@@ -48,7 +53,24 @@ const Profile = () => {
         </div>
       </div>
       <div className="chatContainer">
-        <div className="wrapper">chat</div>
+        <div className="wrapper">
+          <div className="chatList">
+            <h1>Messages</h1>
+            <div className="messageList">
+              <MessageCard setIsMsgOpen={setIsMsgOpen} />
+              <MessageCard />
+              <MessageCard />
+              <MessageCard />
+              <MessageCard />
+              <MessageCard />
+              <MessageCard />
+              <MessageCard />
+              <MessageCard />
+            </div>
+          </div>
+
+          {isMsgOpen && <Chat setIsMsgOpen={setIsMsgOpen} />}
+        </div>
       </div>
     </div>
   );

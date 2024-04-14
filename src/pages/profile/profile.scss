@@ -62,5 +62,31 @@
   .chatContainer {
     flex: 2;
     background-color: #fcf5f3;
+
+    .wrapper {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+
+      .chatList {
+        overflow-y: scroll;
+        padding: 0 10px;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        flex: 1;
+
+        h1 {
+          font-size: 24px;
+          font-weight: normal;
+        }
+
+        .messageList {
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+        }
+      }
+    }
   }
 }
