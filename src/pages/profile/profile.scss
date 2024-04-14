@@ -1,0 +1,66 @@
+.profile {
+  display: flex;
+  height: 100%;
+
+  .details {
+    flex: 3;
+    .wrapper {
+      padding-right: 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+      overflow-y: scroll;
+      height: 100%;
+      padding-bottom: 20px;
+
+      .title {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        h1 {
+          font-size: 28px;
+          font-weight: normal;
+        }
+
+        button {
+          padding: 15px 30px;
+          border: none;
+          font-size: 13px;
+          cursor: pointer;
+          background-color: #fece51;
+        }
+      }
+
+      .info {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        p {
+          display: flex;
+          align-items: center;
+          gap: 30px;
+
+          img {
+            width: 40px;
+            height: 40px;
+            object-fit: cover;
+            border-radius: 50%;
+          }
+        }
+      }
+
+      .listItem {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+    }
+  }
+
+  .chatContainer {
+    flex: 2;
+    background-color: #fcf5f3;
+  }
+}
