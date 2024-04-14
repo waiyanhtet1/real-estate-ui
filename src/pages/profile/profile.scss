@@ -1,6 +1,9 @@
+@import "../../responsive.scss";
+
 .profile {
   display: flex;
   height: 100%;
+  // position: relative;
 
   .details {
     flex: 3;
@@ -13,6 +16,10 @@
       height: 100%;
       padding-bottom: 20px;
 
+      @include sm {
+        padding-right: 0;
+      }
+
       .title {
         display: flex;
         align-items: center;
@@ -21,6 +28,10 @@
         h1 {
           font-size: 28px;
           font-weight: normal;
+
+          @include md {
+            font-size: 20px;
+          }
         }
 
         button {
@@ -29,6 +40,14 @@
           font-size: 13px;
           cursor: pointer;
           background-color: #fece51;
+
+          @include md {
+            padding: 10px 15px;
+          }
+
+          @include sm {
+            padding: 8px;
+          }
         }
       }
 
@@ -55,6 +74,10 @@
         display: flex;
         flex-direction: column;
         gap: 20px;
+
+        @include sm {
+          gap: 40px;
+        }
       }
     }
   }
@@ -87,6 +110,103 @@
           gap: 10px;
         }
       }
+    }
+
+    @include md {
+      display: none;
+    }
+  }
+
+  .side-button {
+    position: absolute;
+    right: 10px;
+    top: 30%;
+    display: none;
+    padding: 10px;
+    background-color: #fece51;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+
+    img {
+      position: relative;
+      width: 24px;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .noti {
+      position: absolute;
+      top: -7px;
+      right: -6px;
+      background-color: red;
+      color: #fff;
+      padding: 6px;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    @include md {
+      display: initial;
+    }
+  }
+
+  .sideChatContainer {
+    display: none;
+    position: absolute;
+    // top: -100%;
+    right: -100%;
+    background-color: #fcf5f3;
+    width: 100vw;
+    height: 100vh;
+    padding: 10px;
+    z-index: 999;
+    transition: all 1s ease;
+
+    &.active {
+      top: 0;
+      right: 0;
+    }
+
+    .wrapper {
+      height: 100%;
+      overflow-y: scroll;
+      .chatList {
+        .top {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          margin-bottom: 10px;
+          position: sticky;
+          top: 0;
+          background-color: #fcf5f3;
+
+          h1 {
+            font-size: 20px;
+            font-weight: normal;
+          }
+
+          .close {
+            font-size: 24px;
+            cursor: pointer;
+          }
+        }
+        .messageList {
+          display: flex;
+          flex-direction: column;
+          gap: 5px;
+        }
+      }
+    }
+
+    @include md {
+      display: initial;
     }
   }
 }

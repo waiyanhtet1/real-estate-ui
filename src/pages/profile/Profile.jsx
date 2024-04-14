@@ -7,6 +7,7 @@ import { useState } from "react";
 
 const Profile = () => {
   const [isMsgOpen, setIsMsgOpen] = useState(null);
+  const [sideChatOpen, setIsSideChatOpen] = useState(null);
 
   return (
     <div className="profile">
@@ -70,6 +71,44 @@ const Profile = () => {
           </div>
 
           {isMsgOpen && <Chat setIsMsgOpen={setIsMsgOpen} />}
+        </div>
+      </div>
+
+      <button className="side-button" onClick={() => setIsSideChatOpen(true)}>
+        <img src="/chat.png" alt="chat" />
+        <span className="noti">3</span>
+      </button>
+
+      <div
+        className={
+          sideChatOpen ? "sideChatContainer active" : "sideChatContainer"
+        }
+      >
+        <div className="wrapper">
+          <div className="chatList">
+            <div className="top">
+              <h1>Messages</h1>
+              <p className="close" onClick={() => setIsSideChatOpen(false)}>
+                X
+              </p>
+            </div>
+            <div className="messageList">
+              <MessageCard setIsMsgOpen={setIsMsgOpen} />
+              <MessageCard />
+              <MessageCard />
+              <MessageCard />
+              <MessageCard />
+              <MessageCard />
+              <MessageCard />
+              <MessageCard />
+              <MessageCard />
+              <MessageCard />
+              <MessageCard />
+              <MessageCard />
+              <MessageCard />
+              <MessageCard />
+            </div>
+          </div>
         </div>
       </div>
     </div>

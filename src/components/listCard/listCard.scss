@@ -1,10 +1,21 @@
+@import "../../responsive.scss";
+
 .listCard {
   display: flex;
   gap: 20px;
 
+  @include sm {
+    flex-direction: column;
+    gap: 10px;
+  }
+
   .imageContainer {
     flex: 2;
     height: 180px;
+
+    @include sm {
+      height: 50px;
+    }
 
     img {
       width: 100%;
@@ -19,6 +30,12 @@
     flex-direction: column;
     justify-content: space-between;
     gap: 20px;
+
+    @include sm {
+      flex: 1;
+      gap: 10px;
+      justify-content: flex-start;
+    }
 
     .content-title {
       font-size: 18px;

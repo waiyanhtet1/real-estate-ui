@@ -1,11 +1,13 @@
 import { useState } from "react";
 import "./navbar.scss";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   const [isUser, setIsUser] = useState(true);
+
+  const location = useLocation();
 
   return (
     <nav>
@@ -24,11 +26,17 @@ function Navbar() {
           <div className="user">
             <span>John Doe</span>
             <Link to="/profile" className="profile">
-              <div className="notification">3</div>
-              <img
-                src="https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-                alt=""
-              />
+              {location.pathname === "/profile" ? (
+                <button className="logout">Logout</button>
+              ) : (
+                <>
+                  <div className="notification">3</div>
+                  <img
+                    src="https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                    alt=""
+                  />
+                </>
+              )}
             </Link>
           </div>
         ) : (

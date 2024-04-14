@@ -105,6 +105,11 @@ nav {
 
           border-radius: 50%;
         }
+
+        .logout {
+          color: red;
+          font-weight: bold;
+        }
       }
     }
 
@@ -160,6 +165,7 @@ nav {
       justify-content: center;
       gap: 40px;
       font-size: 20px;
+      z-index: 1;
 
       &.active {
         right: 0;
