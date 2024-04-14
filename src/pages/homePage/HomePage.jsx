@@ -1,9 +1,9 @@
 import SearchBar from "../../components/searchBar/SearchBar";
 import "./homePage.scss";
 
-const HomePage = () => {
+function HomePage() {
   return (
-    <div className="homepage">
+    <div className="homePage">
       <div className="textContainer">
         <div className="wrapper">
           <h1 className="title">Find Real Estate & Get Your Dream Place</h1>
@@ -13,9 +13,7 @@ const HomePage = () => {
             facilis id pariatur fugit quos laudantium temporibus dolor ea
             repellat provident impedit!
           </p>
-
           <SearchBar />
-
           <div className="boxes">
             <div className="box">
               <h1>16+</h1>
@@ -32,11 +30,11 @@ const HomePage = () => {
           </div>
         </div>
       </div>
-      <div className="imageContainer">
-        <img src="bg.png" alt="bg" />
+      <div className="imgContainer">
+        <img src="/bg.png" alt="" />
       </div>
     </div>
   );
-};
+}
 
 export default HomePage;

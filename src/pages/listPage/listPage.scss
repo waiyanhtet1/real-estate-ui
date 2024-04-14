@@ -6,19 +6,20 @@
 
   .listContainer {
     flex: 3;
+    overflow: scroll;
+    height: 100%;
 
     @include lg {
       width: 60%;
     }
 
     .wrapper {
-      height: 100%;
       padding-right: 40px;
       display: flex;
       flex-direction: column;
       gap: 50px;
-      overflow-y: scroll;
       padding-bottom: 20px;
+      overflow: hidden;
 
       @include md {
         padding-right: 0;

@@ -6,7 +6,8 @@
 
   @include md {
     flex-direction: column;
-    overflow: scroll;
+    overflow-y: scroll;
+    height: 100%;
   }
 
   @include sm {
