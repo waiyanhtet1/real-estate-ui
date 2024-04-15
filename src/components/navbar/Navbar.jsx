@@ -5,7 +5,7 @@ import { Link, useLocation } from "react-router-dom";
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
-  const [isUser, setIsUser] = useState(true);
+  const [isUser, setIsUser] = useState(false);
 
   const location = useLocation();
 
@@ -42,7 +42,9 @@ function Navbar() {
         ) : (
           <>
             <button>Login</button>
-            <button className="signup">SignUp</button>
+            <Link to="/register">
+              <button className="signup">SignUp</button>
+            </Link>
           </>
         )}
 
