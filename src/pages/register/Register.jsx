@@ -1,8 +1,6 @@
 import { useState } from "react";
 import "./register.scss";
 import { Link, useNavigate } from "react-router-dom";
-import { fetchAPI } from "../../utils/fetchAPI";
-import axios from "axios";
 import apiRequest from "../../lib/apiRequest";
 
 function Register() {
@@ -12,15 +10,25 @@ function Register() {
     password: "",
   });
   const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
 
     try {
       const res = await apiRequest.post("/auth/register", form);
       navigate("/");
+      setIsLoading(false);
+      setError(null);
+      setForm({
+        username: "",
+        email: "",
+        password: "",
+      });
     } catch (error) {
+      setIsLoading(false);
       setError(error.response.data.message);
     }
   };

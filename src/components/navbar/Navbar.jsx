@@ -1,13 +1,21 @@
 import { useState } from "react";
 import "./navbar.scss";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import apiRequest from "../../lib/apiRequest";
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
-  const [isUser, setIsUser] = useState(false);
+  const [isUser, setIsUser] = useState(true);
 
   const location = useLocation();
+  const navigate = useNavigate();
+
+  const logoutHandler = async () => {
+    await apiRequest.post("/auth/logout");
+    localStorage.removeItem("user");
+    navigate("/login");
+  };
 
   return (
     <nav>
@@ -27,7 +35,9 @@ function Navbar() {
             <span>John Doe</span>
             <Link to="/profile" className="profile">
               {location.pathname === "/profile" ? (
-                <button className="logout">Logout</button>
+                <button className="logout" onClick={logoutHandler}>
+                  Logout
+                </button>
               ) : (
                 <>
                   <div className="notification">3</div>

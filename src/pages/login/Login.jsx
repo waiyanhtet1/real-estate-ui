@@ -1,7 +1,6 @@
 import { useState } from "react";
 import "./login.scss";
 import { Link } from "react-router-dom";
-import axios from "axios";
 import apiRequest from "../../lib/apiRequest";
 
 function Login() {
@@ -18,6 +17,9 @@ function Login() {
 
     try {
       const res = await apiRequest.post("/auth/login", form);
+
+      localStorage.setItem("user", JSON.stringify(res.data.userInfo));
+
       setIsLoading(false);
       setError(null);
       setForm({
@@ -25,8 +27,8 @@ function Login() {
         password: "",
       });
     } catch (error) {
-      setError(error.response.data.message);
       setIsLoading(false);
+      setError(error.response.data.message);
     }
   };
 
