@@ -1,19 +1,21 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import "./navbar.scss";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import apiRequest from "../../lib/apiRequest";
+import { AuthContext } from "../../context/AuthContext";
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
-  const [isUser, setIsUser] = useState(true);
-
   const location = useLocation();
   const navigate = useNavigate();
 
+  const { currentUser, updateUser } = useContext(AuthContext);
+
   const logoutHandler = async () => {
     await apiRequest.post("/auth/logout");
-    localStorage.removeItem("user");
+    // localStorage.removeItem("user");
+    updateUser(null);
     navigate("/login");
   };
 
@@ -27,12 +29,12 @@ function Navbar() {
         <a href="/">Home</a>
         <a href="/">About</a>
         <a href="/">Content</a>
-        <a href="/">Agents</a>
+        <a href="/list">Agents</a>
       </div>
       <div className="right">
-        {isUser ? (
+        {currentUser ? (
           <div className="user">
-            <span>John Doe</span>
+            <span>{currentUser.username}</span>
             <Link to="/profile" className="profile">
               {location.pathname === "/profile" ? (
                 <button className="logout" onClick={logoutHandler}>
@@ -42,7 +44,11 @@ function Navbar() {
                 <>
                   <div className="notification">3</div>
                   <img
-                    src="https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                    src={
+                      currentUser.avatar
+                        ? currentUser.avatar
+                        : "/default-profile.png"
+                    }
                     alt=""
                   />
                 </>

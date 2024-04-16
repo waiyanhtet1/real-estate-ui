@@ -19,7 +19,7 @@ function Register() {
 
     try {
       const res = await apiRequest.post("/auth/register", form);
-      navigate("/");
+      navigate("/login");
       setIsLoading(false);
       setError(null);
       setForm({
@@ -66,7 +66,7 @@ function Register() {
             value={form.password}
             onChange={handleChange}
           />
-          <button>Register</button>
+          <button disabled={isLoading}>Register</button>
           {error && <span>{error}</span>}
           <Link to="/login">Do you have an account?</Link>
         </form>

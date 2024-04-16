@@ -3,11 +3,13 @@ import { listData } from "../../lib/dummyData";
 import ListCard from "../../components/listCard/ListCard";
 import MessageCard from "../../components/messageCard/MessageCard";
 import Chat from "../../components/chat/Chat";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { AuthContext } from "../../context/AuthContext";
 
 const Profile = () => {
   const [isMsgOpen, setIsMsgOpen] = useState(null);
   const [sideChatOpen, setIsSideChatOpen] = useState(null);
+  const { currentUser } = useContext(AuthContext);
 
   return (
     <div className="profile">
@@ -21,16 +23,20 @@ const Profile = () => {
             <p>
               Avatar:
               <img
-                src="https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                src={
+                  currentUser.avatar
+                    ? currentUser.avatar
+                    : "/default-profile.png"
+                }
                 alt=""
               />
             </p>
 
             <p>
-              Username: <b>John Doe</b>
+              Username: <b>{currentUser.username}</b>
             </p>
             <p>
-              E-mail: <b>john@gmail.com</b>
+              E-mail: <b>{currentUser.email}</b>
             </p>
           </div>
           <div className="title">

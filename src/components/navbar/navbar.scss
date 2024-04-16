@@ -55,6 +55,7 @@ nav {
     gap: 30px;
     background-color: #fcf5f3;
     height: 100%;
+    z-index: 999;
 
     @include md {
       background-color: transparent;
