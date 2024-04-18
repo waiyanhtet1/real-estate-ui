@@ -1,8 +1,9 @@
-import { useContext, useEffect, useState } from "react";
 import "./login.scss";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import apiRequest from "../../lib/apiRequest";
-import { AuthContext } from "../../context/AuthContext";
+import { useDispatch } from "react-redux";
+import { login } from "../../redux/slice/userSlice";
 
 function Login() {
   const [form, setForm] = useState({
@@ -12,7 +13,7 @@ function Login() {
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
-  const { updateUser } = useContext(AuthContext);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -24,11 +25,13 @@ function Login() {
       setIsLoading(false);
     } else {
       try {
+        // fetch data
         const res = await apiRequest.post("/auth/login", form);
 
-        // localStorage.setItem("user", JSON.stringify(res.data.userInfo));
-        updateUser(res.data.userInfo);
+        // redux dispatch action
+        dispatch(login(res.data.userInfo));
 
+        // restart states
         setIsLoading(false);
         setError(null);
         setForm({

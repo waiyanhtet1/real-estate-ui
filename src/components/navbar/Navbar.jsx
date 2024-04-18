@@ -1,22 +1,23 @@
-import { useContext, useState } from "react";
 import "./navbar.scss";
+import { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import apiRequest from "../../lib/apiRequest";
-import { AuthContext } from "../../context/AuthContext";
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../../redux/slice/userSlice";
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   const location = useLocation();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-  const { currentUser, updateUser } = useContext(AuthContext);
+  const { user } = useSelector((state) => state.user);
 
   const logoutHandler = async () => {
     await apiRequest.post("/auth/logout");
-    // localStorage.removeItem("user");
-    updateUser(null);
     navigate("/login");
+    dispatch(logout());
   };
 
   return (
@@ -32,9 +33,9 @@ function Navbar() {
         <a href="/list">Agents</a>
       </div>
       <div className="right">
-        {currentUser ? (
+        {user ? (
           <div className="user">
-            <span>{currentUser.username}</span>
+            <span>{user.username}</span>
             <Link to="/profile" className="profile">
               {location.pathname === "/profile" ? (
                 <button className="logout" onClick={logoutHandler}>
@@ -44,11 +45,7 @@ function Navbar() {
                 <>
                   <div className="notification">3</div>
                   <img
-                    src={
-                      currentUser.avatar
-                        ? currentUser.avatar
-                        : "/default-profile.png"
-                    }
+                    src={user.avatar ? user.avatar : "/default-profile.png"}
                     alt=""
                   />
                 </>

@@ -1,15 +1,15 @@
 import "./profile.scss";
+import { useState } from "react";
 import { listData } from "../../lib/dummyData";
 import ListCard from "../../components/listCard/ListCard";
 import MessageCard from "../../components/messageCard/MessageCard";
 import Chat from "../../components/chat/Chat";
-import { useContext, useState } from "react";
-import { AuthContext } from "../../context/AuthContext";
+import { useSelector } from "react-redux";
 
 const Profile = () => {
   const [isMsgOpen, setIsMsgOpen] = useState(null);
   const [sideChatOpen, setIsSideChatOpen] = useState(null);
-  const { currentUser } = useContext(AuthContext);
+  const { user } = useSelector((state) => state.user);
 
   return (
     <div className="profile">
@@ -23,20 +23,16 @@ const Profile = () => {
             <p>
               Avatar:
               <img
-                src={
-                  currentUser.avatar
-                    ? currentUser.avatar
-                    : "/default-profile.png"
-                }
+                src={user.avatar ? user.avatar : "/default-profile.png"}
                 alt=""
               />
             </p>
 
             <p>
-              Username: <b>{currentUser.username}</b>
+              Username: <b>{user.username}</b>
             </p>
             <p>
-              E-mail: <b>{currentUser.email}</b>
+              E-mail: <b>{user.email}</b>
             </p>
           </div>
           <div className="title">
