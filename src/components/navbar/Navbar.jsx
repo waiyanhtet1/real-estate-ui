@@ -30,7 +30,9 @@ function Navbar() {
         <a href="/">Home</a>
         <a href="/">About</a>
         <a href="/">Content</a>
-        <a href="/list">Agents</a>
+        <Link to="/list">
+          <a href="">Agents</a>
+        </Link>
       </div>
       <div className="right">
         {user ? (
@@ -70,9 +72,17 @@ function Navbar() {
           <a href="/">Home</a>
           <a href="/">About</a>
           <a href="/">Content</a>
-          <a href="/">Agents</a>
-          <a href="/">Login</a>
-          <a href="/">SignUp</a>
+          <Link to="/list">
+            <a href="">Agents</a>
+          </Link>
+          <Link to="/login">
+            <a href="">Login</a>
+          </Link>
+          <Link to="/register">
+            <a href="" className="signup">
+              SignUp
+            </a>
+          </Link>
         </div>
       </div>
     </nav>

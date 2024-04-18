@@ -5,11 +5,16 @@ import ListCard from "../../components/listCard/ListCard";
 import MessageCard from "../../components/messageCard/MessageCard";
 import Chat from "../../components/chat/Chat";
 import { useSelector } from "react-redux";
+import { Navigate } from "react-router-dom";
 
 const Profile = () => {
   const [isMsgOpen, setIsMsgOpen] = useState(null);
   const [sideChatOpen, setIsSideChatOpen] = useState(null);
   const { user } = useSelector((state) => state.user);
+
+  if (!user) {
+    return <Navigate to="/login" />;
+  }
 
   return (
     <div className="profile">
@@ -23,16 +28,16 @@ const Profile = () => {
             <p>
               Avatar:
               <img
-                src={user.avatar ? user.avatar : "/default-profile.png"}
+                src={user?.avatar ? user.avatar : "/default-profile.png"}
                 alt=""
               />
             </p>
 
             <p>
-              Username: <b>{user.username}</b>
+              Username: <b>{user?.username}</b>
             </p>
             <p>
-              E-mail: <b>{user.email}</b>
+              E-mail: <b>{user?.email}</b>
             </p>
           </div>
           <div className="title">
