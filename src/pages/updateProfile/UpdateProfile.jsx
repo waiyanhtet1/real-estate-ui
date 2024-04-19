@@ -4,20 +4,25 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import apiRequest from "../../lib/apiRequest";
 import { update } from "../../redux/slice/userSlice";
+import UploadWidget from "../../components/uploadWidget/UploadWidget";
 
 const UpdateProfile = () => {
   const [error, setError] = useState("");
-  const [avatar, setAvatar] = useState([]);
   const [form, setForm] = useState({});
 
   const { user } = useSelector((state) => state.user);
+
+  const [avatar, setAvatar] = useState(user.avatar);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const updatedUser = await apiRequest.put(`/users/${user.id}`, form);
+      const updatedUser = await apiRequest.put(`/users/${user.id}`, {
+        ...form,
+        avatar,
+      });
 
       dispatch(update(updatedUser.data));
 
@@ -76,20 +81,20 @@ const UpdateProfile = () => {
         </div>
         <div className="sideContainer">
           <img
-            src={avatar[0] || user.avatar || "/default-profile.png"}
+            src={avatar || user.avatar || "/default-profile.png"}
             alt=""
             className="avatar"
           />
-          {/* <UploadWidget
+          <UploadWidget
             uwConfig={{
-              cloudName: "lamadev",
+              cloudName: "dyrksreor",
               uploadPreset: "estate",
               multiple: false,
-              maxImageFileSize: 2000000,
+              maxImageFileSize: 4000000,
               folder: "avatars",
             }}
             setState={setAvatar}
-          /> */}
+          />
         </div>
       </div>
     </div>

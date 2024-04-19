@@ -23,15 +23,17 @@ function Navbar() {
   return (
     <nav>
       <div className="left">
-        <a href="/" className="logo">
-          <img src="/logo.png" alt="logo" />
-          <span>RealEstate</span>
-        </a>
-        <a href="/">Home</a>
-        <a href="/">About</a>
-        <a href="/">Content</a>
+        <Link to="/">
+          <p className="logo">
+            <img src="/logo.png" alt="logo" />
+            <span>RealEstate</span>
+          </p>
+        </Link>
+        <p>Home</p>
+        <p>About</p>
+        <p>Content</p>
         <Link to="/list">
-          <a href="">Agents</a>
+          <p>Agents</p>
         </Link>
       </div>
       <div className="right">
@@ -40,9 +42,9 @@ function Navbar() {
             <span>{user.username}</span>
             <Link to="/profile" className="profile">
               {location.pathname === "/profile" ? (
-                <button className="logout" onClick={logoutHandler}>
+                <p className="logout" onClick={logoutHandler}>
                   Logout
-                </button>
+                </p>
               ) : (
                 <>
                   <div className="notification">3</div>
@@ -57,10 +59,10 @@ function Navbar() {
         ) : (
           <>
             <Link to="/login">
-              <button>Login</button>
+              <p className="auth">Login</p>
             </Link>
             <Link to="/register">
-              <button className="signup">SignUp</button>
+              <p className="auth signup">SignUp</p>
             </Link>
           </>
         )}
@@ -69,19 +71,17 @@ function Navbar() {
           <img src="/menu.png" alt="menu" />
         </div>
         <div className={isOpen ? "menu active" : "menu"}>
-          <a href="/">Home</a>
-          <a href="/">About</a>
-          <a href="/">Content</a>
+          <p>Home</p>
+          <p>About</p>
+          <p>Content</p>
           <Link to="/list">
-            <a href="">Agents</a>
+            <p>Agents</p>
           </Link>
           <Link to="/login">
-            <a href="">Login</a>
+            <p>Login</p>
           </Link>
           <Link to="/register">
-            <a href="" className="signup">
-              SignUp
-            </a>
+            <p>SignUp</p>
           </Link>
         </div>
       </div>
