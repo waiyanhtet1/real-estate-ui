@@ -5,6 +5,7 @@ import SinglePage from "./pages/singlePage/SinglePage";
 import Profile from "./pages/profile/Profile";
 import Register from "./pages/register/Register";
 import Login from "./pages/login/Login";
+import UpdateProfile from "./pages/updateProfile/UpdateProfile";
 import { Layout, RequireAuth } from "./pages/layout/Layout";
 
 function App() {
@@ -43,6 +44,10 @@ function App() {
         {
           path: "/profile",
           element: <Profile />,
+        },
+        {
+          path: "/profile/update",
+          element: <UpdateProfile />,
         },
       ],
     },
