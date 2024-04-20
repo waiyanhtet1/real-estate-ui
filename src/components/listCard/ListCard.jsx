@@ -24,14 +24,6 @@ const ListCard = ({ item }) => {
               <span>{item.bathroom} bathroom</span>
             </div>
           </div>
-          <div className="icons">
-            <div className="icon">
-              <img src="/save.png" alt="save-icon" />
-            </div>
-            <div className="icon">
-              <img src="/chat.png" alt="chat-icon" />
-            </div>
-          </div>
         </div>
       </div>
     </div>

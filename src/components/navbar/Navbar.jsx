@@ -45,7 +45,6 @@ function Navbar() {
                 </p>
               ) : (
                 <>
-                  <div className="notification">3</div>
                   <img
                     src={user.avatar ? user.avatar : "/default-profile.png"}
                     alt=""
