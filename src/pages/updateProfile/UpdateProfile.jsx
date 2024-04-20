@@ -9,10 +9,10 @@ import UploadWidget from "../../components/uploadWidget/UploadWidget";
 const UpdateProfile = () => {
   const [error, setError] = useState("");
   const [form, setForm] = useState({});
+  const [avatar, setAvatar] = useState([]);
 
   const { user } = useSelector((state) => state.user);
 
-  const [avatar, setAvatar] = useState(user.avatar);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -21,7 +21,7 @@ const UpdateProfile = () => {
     try {
       const updatedUser = await apiRequest.put(`/users/${user.id}`, {
         ...form,
-        avatar,
+        avatar: avatar[0],
       });
 
       dispatch(update(updatedUser.data));
@@ -81,7 +81,7 @@ const UpdateProfile = () => {
         </div>
         <div className="sideContainer">
           <img
-            src={avatar || user.avatar || "/default-profile.png"}
+            src={avatar[0] || user.avatar || "/default-profile.png"}
             alt=""
             className="avatar"
           />

@@ -2,8 +2,12 @@ import "./singlePage.scss";
 import Slider from "../../components/slider/Slider";
 import { singlePostData as data, userData } from "../../lib/dummyData";
 import Map from "../../components/map/Map";
+import { useLoaderData } from "react-router-dom";
+import DOMPurify from "dompurify";
 
 const SinglePage = () => {
+  const data = useLoaderData();
+
   return (
     <div className="singlePage">
       <div className="details">
@@ -19,11 +23,16 @@ const SinglePage = () => {
               <div className="info-price">$ {data.price}</div>
             </div>
             <div className="user">
-              <img src={userData.img} alt="" />
-              <h4>{userData.name}</h4>
+              <img src={data.user.avatar} alt="" />
+              <h4>{data.user.username}</h4>
             </div>
           </div>
-          <div className="bottom">{data.description}</div>
+          <div
+            className="bottom"
+            dangerouslySetInnerHTML={{
+              __html: DOMPurify.sanitize(data.postDetail.desc),
+            }}
+          ></div>
         </div>
       </div>
       <div className="features">
@@ -34,21 +43,29 @@ const SinglePage = () => {
               <img src="/utility.png" alt="" />
               <div className="featureText">
                 <span>Utilities</span>
-                <p>Renter is responsible</p>
+                {data.postDetail.utilities === "owner" ? (
+                  <p>Owner is responsible</p>
+                ) : (
+                  <p>Tenant is responsible</p>
+                )}
               </div>
             </div>
             <div className="feature">
               <img src="/pet.png" alt="" />
               <div className="featureText">
                 <span>Pet Policy</span>
-                <p>Pets Allowed</p>
+                {data.postDetail.pet === "allowed" ? (
+                  <p>Pets Allowed</p>
+                ) : (
+                  <p>Pets Not Allowed</p>
+                )}
               </div>
             </div>
             <div className="feature">
               <img src="/fee.png" alt="" />
               <div className="featureText">
                 <span>Property Fees</span>
-                <p>Must have 3x the rent in total household income</p>
+                <p>{data.postDetail.income}</p>
               </div>
             </div>
           </div>
@@ -56,15 +73,15 @@ const SinglePage = () => {
           <div className="sizes">
             <div className="size">
               <img src="/size.png" alt="" />
-              <span>80 sqft</span>
+              <span>{data.postDetail.size} sqft</span>
             </div>
             <div className="size">
               <img src="/bed.png" alt="" />
-              <span>2 beds</span>
+              <span>{data.bedroom} beds</span>
             </div>
             <div className="size">
               <img src="/bath.png" alt="" />
-              <span>1 bathroom</span>
+              <span>{data.bathroom} bathroom</span>
             </div>
           </div>
           <p className="title">Nearby Places</p>
@@ -73,21 +90,21 @@ const SinglePage = () => {
               <img src="/school.png" alt="" />
               <div className="featureText">
                 <span>School</span>
-                <p>250m away</p>
+                <p>{data.postDetail.school}m away</p>
               </div>
             </div>
             <div className="feature">
               <img src="/pet.png" alt="" />
               <div className="featureText">
                 <span>Bus Stop</span>
-                <p>100m away</p>
+                <p>{data.postDetail.bus}m away</p>
               </div>
             </div>
             <div className="feature">
               <img src="/fee.png" alt="" />
               <div className="featureText">
                 <span>Restaurant</span>
-                <p>200m away</p>
+                <p>{data.postDetail.restaurant}m away</p>
               </div>
             </div>
           </div>

@@ -13,7 +13,47 @@ function NewPostPage() {
 
   const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {};
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    // get form data from each fields
+    const formData = new FormData(e.target);
+    const inputs = Object.fromEntries(formData);
+    try {
+      // api request for create new post
+      const res = await apiRequest.post("/posts", {
+        postData: {
+          title: inputs.title,
+          price: parseInt(inputs.price),
+          images,
+          address: inputs.address,
+          city: inputs.city,
+          bedroom: parseInt(inputs.bedroom),
+          bathroom: parseInt(inputs.bathroom),
+          latitude: inputs.latitude,
+          longitude: inputs.longitude,
+          type: inputs.type,
+          property: inputs.property,
+        },
+        postDetail: {
+          desc: value,
+          utilities: inputs.utilities,
+          pet: inputs.pet,
+          income: inputs.income,
+          size: parseInt(inputs.size),
+          school: parseInt(inputs.school),
+          bus: parseInt(inputs.bus),
+          restaurant: parseInt(inputs.restaurant),
+        },
+      });
+
+      navigate(`/${res.data.id}`);
+      console.log(res);
+    } catch (error) {
+      console.log(error);
+      //   setError(error.response.data.message);
+    }
+  };
 
   return (
     <div className="newPostPage">
@@ -128,7 +168,7 @@ function NewPostPage() {
         <UploadWidget
           uwConfig={{
             multiple: true,
-            cloudName: "lamadev",
+            cloudName: "dyrksreor",
             uploadPreset: "estate",
             folder: "posts",
           }}
