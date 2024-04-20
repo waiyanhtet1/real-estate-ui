@@ -44,7 +44,9 @@ const Profile = () => {
           </div>
           <div className="title">
             <h1>My List</h1>
-            <button>Add New Post</button>
+            <Link to="/addPost">
+              <button>Add New Post</button>
+            </Link>
           </div>
 
           <div className="listItem">
