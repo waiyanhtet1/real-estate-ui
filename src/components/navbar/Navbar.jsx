@@ -1,23 +1,21 @@
-import "./navbar.scss";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../context/AuthContext";
 import apiRequest from "../../lib/apiRequest";
-import { useDispatch, useSelector } from "react-redux";
-import { logout } from "../../redux/slice/userSlice";
+import "./navbar.scss";
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   const location = useLocation();
   const navigate = useNavigate();
-  const dispatch = useDispatch();
 
-  const { user } = useSelector((state) => state.user);
+  const { currentUser: user, updateUser } = useContext(AuthContext);
 
   const logoutHandler = async () => {
     await apiRequest.post("/auth/logout");
+    updateUser(null);
     navigate("/login");
-    dispatch(logout());
   };
 
   return (

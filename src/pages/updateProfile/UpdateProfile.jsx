@@ -1,30 +1,27 @@
-import "./updateProfile.scss";
-import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import apiRequest from "../../lib/apiRequest";
-import { update } from "../../redux/slice/userSlice";
 import UploadWidget from "../../components/uploadWidget/UploadWidget";
+import { AuthContext } from "../../context/AuthContext";
+import apiRequest from "../../lib/apiRequest";
+import "./updateProfile.scss";
 
 const UpdateProfile = () => {
   const [error, setError] = useState("");
   const [form, setForm] = useState({});
   const [avatar, setAvatar] = useState([]);
 
-  const { user } = useSelector((state) => state.user);
-
+  const { currentUser: user, updateUser } = useContext(AuthContext);
   const navigate = useNavigate();
-  const dispatch = useDispatch();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const updatedUser = await apiRequest.put(`/users/${user.id}`, {
+      const res = await apiRequest.put(`/users/${user.id}`, {
         ...form,
         avatar: avatar[0],
       });
 
-      dispatch(update(updatedUser.data));
+      updateUser(res.data);
 
       navigate(-1);
     } catch (error) {

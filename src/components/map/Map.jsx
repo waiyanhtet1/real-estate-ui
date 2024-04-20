@@ -1,7 +1,7 @@
-import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
-import "./map.scss";
+import { MapContainer, TileLayer } from "react-leaflet";
 import Pin from "../pin/Pin";
+import "./map.scss";
 
 const Map = ({ items }) => {
   return (

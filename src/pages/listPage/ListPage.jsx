@@ -1,10 +1,10 @@
 import { Suspense, useState } from "react";
 import "./listPage.scss";
 // import { listData as data } from "../../lib/dummyData";
+import { Await, useLoaderData } from "react-router-dom";
 import Filter from "../../components/filter/Filter";
 import ListCard from "../../components/listCard/ListCard";
 import Map from "../../components/map/Map";
-import { Await, useLoaderData } from "react-router-dom";
 
 const ListPage = () => {
   const [isMapOpen, setIsMapOpen] = useState(false);

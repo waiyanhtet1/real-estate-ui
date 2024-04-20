@@ -1,7 +1,7 @@
 import { useState } from "react";
-import "./register.scss";
 import { Link, useNavigate } from "react-router-dom";
 import apiRequest from "../../lib/apiRequest";
+import "./register.scss";
 
 function Register() {
   const [form, setForm] = useState({

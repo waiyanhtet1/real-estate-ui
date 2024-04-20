@@ -1,5 +1,5 @@
-import "./listCard.scss";
 import { Link } from "react-router-dom";
+import "./listCard.scss";
 
 const ListCard = ({ item }) => {
   return (

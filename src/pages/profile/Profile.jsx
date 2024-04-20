@@ -1,16 +1,12 @@
-import "./profile.scss";
-import { useState } from "react";
-import { listData } from "../../lib/dummyData";
-import ListCard from "../../components/listCard/ListCard";
-import MessageCard from "../../components/messageCard/MessageCard";
-import Chat from "../../components/chat/Chat";
-import { useSelector } from "react-redux";
+import { useContext, useState } from "react";
 import { Link, Navigate } from "react-router-dom";
+import { AuthContext } from "../../context/AuthContext";
+import "./profile.scss";
 
 const Profile = () => {
   const [isMsgOpen, setIsMsgOpen] = useState(null);
   const [sideChatOpen, setIsSideChatOpen] = useState(null);
-  const { user } = useSelector((state) => state.user);
+  const { currentUser: user } = useContext(AuthContext);
 
   if (!user) {
     return <Navigate to="/login" />;
@@ -49,22 +45,22 @@ const Profile = () => {
             </Link>
           </div>
 
-          <div className="listItem">
+          {/* <div className="listItem">
             {listData.map((list) => (
               <ListCard key={list.id} item={list} />
             ))}
-          </div>
+          </div> */}
 
           <div className="title">
             <h1>Saved List</h1>
           </div>
 
-          {listData.map((list) => (
+          {/* {listData.map((list) => (
             <ListCard key={list.id} item={list} />
-          ))}
+          ))} */}
         </div>
       </div>
-      <div className="chatContainer">
+      {/* <div className="chatContainer">
         <div className="wrapper">
           <div className="chatList">
             <h1>Messages</h1>
@@ -83,14 +79,14 @@ const Profile = () => {
 
           {isMsgOpen && <Chat setIsMsgOpen={setIsMsgOpen} />}
         </div>
-      </div>
+      </div> */}
 
-      <button className="side-button" onClick={() => setIsSideChatOpen(true)}>
+      {/* <button className="side-button" onClick={() => setIsSideChatOpen(true)}>
         <img src="/chat.png" alt="chat" />
         <span className="noti">3</span>
-      </button>
+      </button> */}
 
-      <div
+      {/* <div
         className={
           sideChatOpen ? "sideChatContainer active" : "sideChatContainer"
         }
@@ -122,7 +118,7 @@ const Profile = () => {
           </div>
           {isMsgOpen && <Chat setIsMsgOpen={setIsMsgOpen} />}
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

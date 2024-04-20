@@ -1,9 +1,8 @@
-import "./login.scss";
-import { useEffect, useState } from "react";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { useContext, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../context/AuthContext";
 import apiRequest from "../../lib/apiRequest";
-import { useDispatch, useSelector } from "react-redux";
-import { login } from "../../redux/slice/userSlice";
+import "./login.scss";
 
 function Login() {
   const [form, setForm] = useState({
@@ -13,7 +12,7 @@ function Login() {
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
-  const dispatch = useDispatch();
+  const { updateUser } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -28,8 +27,8 @@ function Login() {
         // fetch data
         const res = await apiRequest.post("/auth/login", form);
 
-        // redux dispatch action
-        dispatch(login(res.data.userInfo));
+        // dispatch action
+        updateUser(res.data.userInfo);
 
         // restart states
         setIsLoading(false);
