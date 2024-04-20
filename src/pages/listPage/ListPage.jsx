@@ -4,9 +4,12 @@ import { listData as data } from "../../lib/dummyData";
 import Filter from "../../components/filter/Filter";
 import ListCard from "../../components/listCard/ListCard";
 import Map from "../../components/map/Map";
+import { useLoaderData } from "react-router-dom";
 
 const ListPage = () => {
   const [isMapOpen, setIsMapOpen] = useState(false);
+
+  const data = useLoaderData();
 
   return (
     <div className="list">
