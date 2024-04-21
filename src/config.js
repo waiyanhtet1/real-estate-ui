@@ -3,7 +3,7 @@ const configs = {
     SERVER_URI: "http://localhost:5000",
   },
   production: {
-    SERVER_URI: "https://real-estate-backend-vwr6.onrender.com",
+    SERVER_URI: "https://real-estate-backend-8xxt.onrender.com",
   },
 };
 
