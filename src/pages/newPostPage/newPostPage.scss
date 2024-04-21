@@ -1,6 +1,13 @@
+@import "../../responsive.scss";
+
 .newPostPage {
   height: 100%;
   display: flex;
+  overflow-y: scroll;
+
+  @include md {
+    flex-direction: column;
+  }
 
   .formContainer {
     flex: 3;
@@ -9,11 +16,19 @@
     .wrapper {
       margin: 30px 50px 100px 0px;
 
+      @include sm {
+        margin: 0;
+      }
+
       form {
         display: flex;
         justify-content: space-between;
         flex-wrap: wrap;
         gap: 20px;
+
+        @include sm {
+          gap: 10px;
+        }
 
         .item {
           width: 30%;
@@ -65,6 +80,13 @@
     gap: 20px;
     align-items: center;
     justify-content: center;
+
+    @include md {
+      // flex: 1;
+      height: 300px;
+      flex-direction: row;
+      overflow-x: scroll;
+    }
 
     img {
       width: 50%;
